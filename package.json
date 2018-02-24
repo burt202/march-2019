@@ -1,0 +1,20 @@
+{
+  "name": "march-2019",
+  "version": "0.0.1",
+  "license": "ISC",
+  "repository": {
+    "type": "https",
+    "url": "https://github.com/burt202/march-2019"
+  },
+  "scripts": {
+    "build": "rm -rf build; webpack --config ./webpack.config.js --progress",
+    "deploy": "gh-pages -d build",
+    "prepush": "npm run build; npm run deploy"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^4.3.1",
+    "gh-pages": "^1.1.0",
+    "nunjucks-webpack-plugin": "^4.0.0",
+    "webpack": "^3.10.0"
+  }
+}
