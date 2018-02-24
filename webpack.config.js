@@ -1,9 +1,8 @@
-const webpack = require("webpack")
 const path = require("path")
 const NunjucksWebpackPlugin = require("nunjucks-webpack-plugin")
 const CopyWebpackPlugin = require("copy-webpack-plugin")
-
-const packageJson = require("./package.json")
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 
 module.exports = {
   entry: [
@@ -13,6 +12,15 @@ module.exports = {
     publicPath: "/",
     path: path.join(__dirname, "build"),
     filename: "bundle.js",
+  },
+  module: {
+    rules: [{
+      test: /\.css$/,
+      loader: ExtractTextPlugin.extract({
+        fallback: "style-loader",
+        use: "css-loader",
+      }),
+    }],
   },
   plugins: [
     new CopyWebpackPlugin([
@@ -30,5 +38,8 @@ module.exports = {
         },
       ],
     }),
+    new ExtractTextPlugin("bundle.css"),
+    new OptimizeCssAssetsPlugin(),
   ],
+
 }
