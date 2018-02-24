@@ -72,9 +72,16 @@ module.exports = __webpack_require__(1);
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(2)
+
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports) {
 
-console.log("hello world")
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
