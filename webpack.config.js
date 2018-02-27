@@ -3,6 +3,7 @@ const NunjucksWebpackPlugin = require("nunjucks-webpack-plugin")
 const CopyWebpackPlugin = require("copy-webpack-plugin")
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin")
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 
 module.exports = {
   entry: [
@@ -38,6 +39,7 @@ module.exports = {
         },
       ],
     }),
+    new UglifyJsPlugin({}),
     new ExtractTextPlugin("bundle.css"),
     new OptimizeCssAssetsPlugin(),
   ],
