@@ -10,7 +10,7 @@ module.exports = {
     "./src/index.js",
   ],
   output: {
-    publicPath: "/",
+    publicPath: "",
     path: path.join(__dirname, "build"),
     filename: "bundle.js",
   },
@@ -21,6 +21,17 @@ module.exports = {
         fallback: "style-loader",
         use: "css-loader",
       }),
+    },
+    {
+      test: /\.(png|jpg|gif)$/,
+      use: [
+        {
+          loader: 'url-loader',
+          options: {
+            limit: 8192
+          }
+        }
+      ]
     }],
   },
   plugins: [
