@@ -9,20 +9,12 @@ body {
   color: #333;
 }
 
-body, html {
-  height: 100%;
-}
-
-.container {
-  height: 100%;
-}
-
 .hero {
   background-image: url("bg.jpg");
-  height: 100%;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  height: 600px;
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
@@ -50,12 +42,14 @@ body, html {
   margin: 0 auto;
 }
 
+.contact {
+  margin-top: 50px;
+}
+
+/* Responsive */
+
 @media only screen and (max-width: 600px) {
   .body {
     width: 100%;
   }
-}
-
-.contact {
-  margin-top: 50px;
 }
