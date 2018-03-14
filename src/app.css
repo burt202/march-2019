@@ -9,21 +9,12 @@ body {
   color: #333;
 }
 
-body, html {
-  height: 100%;
-}
-
-.container {
-  height: 100%;
-}
-
-
 .hero {
   background-image: url("bg.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 50%;
+  height: 600px;
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
