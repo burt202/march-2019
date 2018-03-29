@@ -1,12 +1,12 @@
+const webpack = require("webpack")
 const path = require("path")
 const NunjucksWebpackPlugin = require("nunjucks-webpack-plugin")
 const CopyWebpackPlugin = require("copy-webpack-plugin")
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
-const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin")
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 
 module.exports = {
   entry: [
+    "webpack-dev-server/client?http://localhost:8080",
+    "webpack/hot/only-dev-server",
     "./src/index.js",
   ],
   output: {
@@ -14,25 +14,14 @@ module.exports = {
     path: path.join(__dirname, "build"),
     filename: "bundle.js",
   },
+  resolve: {
+    extensions: [".jsx", ".js"],
+  },
   module: {
-    rules: [{
-      test: /\.css$/,
-      loader: ExtractTextPlugin.extract({
-        fallback: "style-loader",
-        use: "css-loader",
-      }),
-    },
-    {
-      test: /\.(png|jpg|gif)$/,
-      use: [
-        {
-          loader: 'url-loader',
-          options: {
-            limit: 8192
-          }
-        }
-      ]
-    }],
+    rules: [
+      {test: /\.(png|jpg|gif)$/, use: [{loader: "url-loader", options: {limit: 8192}}]},
+      {test: /\.css$/, use: [{loader: "style-loader"}, {loader: "css-loader"}]},
+    ],
   },
   plugins: [
     new CopyWebpackPlugin([
@@ -50,9 +39,6 @@ module.exports = {
         },
       ],
     }),
-    new UglifyJsPlugin({}),
-    new ExtractTextPlugin("bundle.css"),
-    new OptimizeCssAssetsPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
   ],
-
 }
