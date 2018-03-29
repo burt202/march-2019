@@ -1,5 +1,8 @@
 module.exports = {
-  "extends": ["eslint:recommended"],
+  "plugins": [
+    "react"
+  ],
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
   "env": {
     "browser": 1,
     "node": 1,
@@ -7,6 +10,8 @@ module.exports = {
     "es6": 1
   },
   "rules": {
+    "react/display-name": 0,
+
     // Separate the rules into blocks based on what plugin they come from.
     // Default rules are split up based on sections found on the eslint rules page.
     // Rules should be sorted alphabetically inside each section.

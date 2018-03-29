@@ -5,9 +5,10 @@ const CopyWebpackPlugin = require("copy-webpack-plugin")
 
 module.exports = {
   entry: [
+    "react-hot-loader/patch",
     "webpack-dev-server/client?http://localhost:8080",
     "webpack/hot/only-dev-server",
-    "./src/index.js",
+    "./src/index.jsx",
   ],
   output: {
     publicPath: "",
@@ -19,9 +20,17 @@ module.exports = {
   },
   module: {
     rules: [
+      {test: /\.jsx$/, use: [{loader: "jsx-loader"}]},
       {test: /\.(png|jpg|gif)$/, use: [{loader: "url-loader", options: {limit: 8192}}]},
       {test: /\.css$/, use: [{loader: "style-loader"}, {loader: "css-loader"}]},
     ],
+  },
+  devServer: {
+    contentBase: "./build",
+    noInfo: true,
+    hot: true,
+    inline: true,
+    historyApiFallback: true,
   },
   plugins: [
     new CopyWebpackPlugin([
