@@ -1,7 +1,7 @@
 const React = require("react")
 const createReactClass = require("create-react-class")
 
-require("./app.css")
+require("../app.css")
 
 const Main = createReactClass({
   displayName: "Main",
