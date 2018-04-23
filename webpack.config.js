@@ -36,6 +36,13 @@ module.exports = {
     new CopyWebpackPlugin([
       {from: "src/favicon.ico", to: "favicon.ico"},
       {from: "CNAME", to: "CNAME", toType: "file"},
+      {from: "src/images/doubletree.png", to: "doubletree.png"},
+      {from: "src/images/ibis.png", to: "ibis.png"},
+      {from: "src/images/marriott.png", to: "marriott.png"},
+      {from: "src/images/mercure.png", to: "mercure.png"},
+      {from: "src/images/premierinn.png", to: "premierinn.png"},
+      {from: "src/images/radisson.png", to: "radisson.png"},
+      {from: "src/images/travelodge.png", to: "travelodge.png"},
     ]),
     new NunjucksWebpackPlugin({
       templates: [
