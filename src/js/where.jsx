@@ -17,8 +17,10 @@ const Where = createReactClass({
         <h1>Where</h1>
         <p>If you haven&apos;t already guessed, we will be getting married in Bristol! The ceremony will take place at the Bristol Register Office and the reception will take place at the Mshed. See below for details on both venues. There is approx a 10-15 min walk between the two venues.</p>
         <h3>Bristol Register Office</h3>
+        <p>Ceremony @ 2.15pm</p>
         <p>Address: The Old Council House, Corn St, Bristol BS1 1JG</p>
         <h3>MShed</h3>
+        <p>From 3pm, evening entertainment @ 7.30pm</p>
         <p>Address: Princes Wharf, Wapping Rd, Bristol BS1 4RN</p>
         <p><a target="_blank" rel="noopener noreferrer" href="https://www.bristolmuseums.org.uk/m-shed/">https://www.bristolmuseums.org.uk/m-shed/</a></p>
         <GoogleMap
