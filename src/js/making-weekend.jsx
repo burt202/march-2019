@@ -17,6 +17,7 @@ const markers = [
   {lat: 51.451722, lng: -2.592956, icon: "http://aaronandlaylah.co.uk/premierinn.png"},
   {lat: 51.448708, lng: -2.587672, icon: "http://aaronandlaylah.co.uk/doubletree.png"},
   {lat: 51.453553, lng: -2.588392, icon: "http://aaronandlaylah.co.uk/premierinn.png"},
+  {lat: 51.450623, lng: -2.586118, icon: "http://aaronandlaylah.co.uk/novotel.png"},
 ]
 
 const MakingWeekend = createReactClass({
@@ -31,8 +32,8 @@ const MakingWeekend = createReactClass({
       <div>
         <h1>Making A Weekend Of It?</h1>
         <h3>Hotels</h3>
-        <p>If you plan on making a weekend of it, which we fully recommend, then there is plenty of places to stay nearby.</p>
-        <p>We plan to stay at the <a target="_blank" rel="noopener noreferrer" href="https://www.hotelduvin.com/locations/bristol-city-centre/">Hotel du Vin</a> (we will confirm this ASAP), but below are a few other places that would be well located.</p>
+        <p>If you plan on making a weekend of it, which we fully recommend, then there are plenty of places to stay nearby.</p>
+        <p>We are staying at the <a target="_blank" rel="noopener noreferrer" href="https://www.hotelduvin.com/locations/bristol-city-centre/">Hotel du Vin</a> so feel free to join, but otherwise, below are a few other places that would be well located.</p>
         <GoogleMap
           api={this.props.api}
           zoom={15}
@@ -49,7 +50,7 @@ const MakingWeekend = createReactClass({
         <p><a target="_blank" rel="noopener noreferrer" href="http://www.spitfirebarbecue.com/">Spitfire</a></p>
         <p>BBQ Grill right on the harbourside that serves very big portions. Enough said</p>
         <p><a target="_blank" rel="noopener noreferrer" href="http://www.sergios.co.uk/">Sergios</a></p>
-        <p>Family run restaurant specialising in authentic Italian cuisine, you will need to book!</p>
+        <p>Family run restaurant specialising in authentic Italian cuisine, it gets cosy and you will need to book!</p>
       </div>
     )
   },
