@@ -18,6 +18,8 @@ const markers = [
   {lat: 51.448708, lng: -2.587672, icon: "http://aaronandlaylah.co.uk/doubletree.png"},
   {lat: 51.453553, lng: -2.588392, icon: "http://aaronandlaylah.co.uk/premierinn.png"},
   {lat: 51.450623, lng: -2.586118, icon: "http://aaronandlaylah.co.uk/novotel.png"},
+  {lat: 51.455833, lng: -2.585302, icon: "http://aaronandlaylah.co.uk/marriott.png"},
+  {lat: 51.456770, lng: -2.596343, icon: "http://aaronandlaylah.co.uk/hotelduvin.png"},
 ]
 
 const MakingWeekend = createReactClass({
@@ -37,8 +39,8 @@ const MakingWeekend = createReactClass({
         <GoogleMap
           api={this.props.api}
           zoom={15}
-          lat={51.4509504}
-          lng={-2.5958109}
+          lat={51.452356}
+          lng={-2.594824}
           markers={markers}
         />
         <h3>Places To Eat</h3>

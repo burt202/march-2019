@@ -37,6 +37,7 @@ module.exports = {
       {from: "src/favicon.ico", to: "favicon.ico"},
       {from: "CNAME", to: "CNAME", toType: "file"},
       {from: "src/images/doubletree.png", to: "doubletree.png"},
+      {from: "src/images/hotelduvin.png", to: "hotelduvin.png"},
       {from: "src/images/ibis.png", to: "ibis.png"},
       {from: "src/images/marriott.png", to: "marriott.png"},
       {from: "src/images/mercure.png", to: "mercure.png"},
