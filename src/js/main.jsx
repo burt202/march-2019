@@ -3,6 +3,7 @@ const createReactClass = require("create-react-class")
 
 const Where = require("./where")
 const MakingWeekend = require("./making-weekend")
+const DressCode = require("./dress-code")
 
 require("../app.css")
 
@@ -36,6 +37,7 @@ const Main = createReactClass({
         <div className="body">
           <p>Welcome to our little space on the internet where you can find out all about our special day. We aim to keep this page as up to date as we can, so do keep checking back!</p>
           <Where api={this.state.googleApi} />
+          <DressCode />
           <MakingWeekend api={this.state.googleApi} />
           <p className="contact">contact@aaronandlaylah.co.uk</p>
         </div>
