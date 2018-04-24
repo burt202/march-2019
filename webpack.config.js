@@ -40,6 +40,7 @@ module.exports = {
       {from: "src/images/ibis.png", to: "ibis.png"},
       {from: "src/images/marriott.png", to: "marriott.png"},
       {from: "src/images/mercure.png", to: "mercure.png"},
+      {from: "src/images/novotel.png", to: "novotel.png"},
       {from: "src/images/premierinn.png", to: "premierinn.png"},
       {from: "src/images/radisson.png", to: "radisson.png"},
       {from: "src/images/travelodge.png", to: "travelodge.png"},
