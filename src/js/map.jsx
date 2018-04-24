@@ -19,11 +19,11 @@ const GoogleMap = createReactClass({
     markers: PropTypes.array,
   },
 
-  componentDidUpdate() {
+  componentDidUpdate: function() {
     if (this.props.api) this.loadMap()
   },
 
-  loadMap() {
+  loadMap: function() {
     const api = this.props.api
 
     const center = new api.maps.LatLng(this.props.lat, this.props.lng)
@@ -50,11 +50,11 @@ const GoogleMap = createReactClass({
     }.bind(this))
   },
 
-  setRef(el) {
+  setRef: function(el) {
     this.map = el
   },
 
-  render() {
+  render: function() {
     return (
       <div style={{height: "400px"}} ref={this.setRef}>Loading</div>
     )

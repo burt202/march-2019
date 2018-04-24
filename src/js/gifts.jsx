@@ -4,7 +4,7 @@ const createReactClass = require("create-react-class")
 const Gifts = createReactClass({
   displayName: "Gifts",
 
-  render() {
+  render: function() {
     return (
       <div>
         <h1>Gifts</h1>

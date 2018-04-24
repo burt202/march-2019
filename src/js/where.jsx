@@ -11,7 +11,7 @@ const Where = createReactClass({
     api: PropTypes.object,
   },
 
-  render() {
+  render: function() {
     return (
       <div>
         <h1>Where</h1>

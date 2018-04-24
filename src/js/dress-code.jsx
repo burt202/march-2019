@@ -4,7 +4,7 @@ const createReactClass = require("create-react-class")
 const DressCode = createReactClass({
   displayName: "DressCode",
 
-  render() {
+  render: function() {
     return (
       <div>
         <h1>Dress Code</h1>

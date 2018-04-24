@@ -29,7 +29,7 @@ const MakingWeekend = createReactClass({
     api: PropTypes.object,
   },
 
-  render() {
+  render: function() {
     return (
       <div>
         <h1>Making A Weekend Of It?</h1>

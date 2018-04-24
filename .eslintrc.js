@@ -193,7 +193,7 @@ module.exports = {
     "no-dupe-class-members": 2, // disallow duplicate name in class members
     "no-this-before-super": 2, // disallow use of this/super before calling super() in constructors.
     "no-var": 2, // require let or const instead of var
-    "object-shorthand": 2, // require method and property shorthand syntax for object literals
+    "object-shorthand": 0, // require method and property shorthand syntax for object literals
     "prefer-arrow-callback": 0, // suggest using arrow functions as callbacks
     "prefer-const": 2, // suggest using const declaration for variables that are never modified after declared
     "prefer-reflect": 0, // suggest using Reflect methods where applicable

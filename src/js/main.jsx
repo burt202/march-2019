@@ -11,22 +11,22 @@ require("../app.css")
 const Main = createReactClass({
   displayName: "Main",
 
-  getInitialState() {
+  getInitialState: function() {
     return {
       googleApi: undefined,
     }
   },
 
-  componentDidMount() {
+  componentDidMount: function() {
     window.initApi = this.initApi
     loadJS("https://maps.googleapis.com/maps/api/js?key=AIzaSyB7jv8r02kCAeO-3w8IprfdfvVbYO4G_6w&callback=initApi")
   },
 
-  initApi() {
+  initApi: function() {
     this.setState({googleApi: window.google})
   },
 
-  render() {
+  render: function() {
     return (
       <div>
         <div className="hero">
