@@ -3,9 +3,9 @@ const createReactClass = require("create-react-class")
 const PropTypes = require("prop-types")
 
 const markerMap = {
-  red: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
-  green: "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
-  blue: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+  red: "https://maps.google.com/mapfiles/ms/icons/red-dot.png",
+  green: "https://maps.google.com/mapfiles/ms/icons/green-dot.png",
+  blue: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
 }
 
 const GoogleMap = createReactClass({
