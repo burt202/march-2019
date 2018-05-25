@@ -45,6 +45,7 @@ module.exports = {
       {from: "src/images/premierinn.png", to: "premierinn.png"},
       {from: "src/images/radisson.png", to: "radisson.png"},
       {from: "src/images/travelodge.png", to: "travelodge.png"},
+      {from: "src/images/hilton.png", to: "hilton.png"},
     ]),
     new NunjucksWebpackPlugin({
       templates: [
