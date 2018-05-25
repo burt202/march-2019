@@ -21,6 +21,7 @@ const markers = [
   {lat: 51.455833, lng: -2.585302, icon: "http://aaronandlaylah.co.uk/marriott.png"},
   {lat: 51.456770, lng: -2.596343, icon: "http://aaronandlaylah.co.uk/hotelduvin.png"},
   {lat: 51.453168, lng: -2.592350, icon: "http://aaronandlaylah.co.uk/mercure.png"},
+  {lat: 51.451794, lng: -2.585305, icon: "http://aaronandlaylah.co.uk/hilton.png"},
 ]
 
 const MakingWeekend = createReactClass({
