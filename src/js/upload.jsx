@@ -93,7 +93,7 @@ const Upload = createReactClass({
 
   startUpload: function(files) {
     if (!this.state.uploaderName.length) {
-      this.setState({error: "Please provide an author name"})
+      this.setState({error: "Please provide your name"})
       return
     }
 
@@ -132,8 +132,8 @@ const Upload = createReactClass({
 
     return (
       <div>
-        <h1>Upload Your Photos</h1>
-        <p>If you have taken any photos on the day yourself, we would love to see them. Share them with us using the uploader below.</p>
+        <a name="upload"><h1>Upload Your Photos</h1></a>
+        <p>If you have taken any photos on the day yourself, we would love to see them! Share them with us using the uploader below.</p>
         {this.state.error && <p className="error">{this.state.error}</p>}
         {!this.state.uploads && <div>
           <input value={this.state.uploaderName} onChange={this.onInputChange} placeholder="Add your name here" />

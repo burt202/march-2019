@@ -6,6 +6,7 @@ const MakingWeekend = require("./making-weekend")
 const DressCode = require("./dress-code")
 const Gifts = require("./gifts")
 const Food = require("./food")
+const Upload = require("./upload")
 
 require("../app.css")
 
@@ -43,6 +44,7 @@ const Main = createReactClass({
           <DressCode />
           <Gifts />
           <MakingWeekend api={this.state.googleApi} />
+          <Upload />
           <p className="contact">contact@aaronandlaylah.co.uk</p>
         </div>
       </div>
