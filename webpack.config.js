@@ -4,6 +4,10 @@ const NunjucksWebpackPlugin = require("nunjucks-webpack-plugin")
 const CopyWebpackPlugin = require("copy-webpack-plugin")
 
 module.exports = {
+  mode: "development",
+  performance: {
+    hints: false,
+  },
   entry: [
     "react-hot-loader/patch",
     "webpack-dev-server/client?http://localhost:8080",
@@ -27,7 +31,6 @@ module.exports = {
   },
   devServer: {
     contentBase: "./build",
-    noInfo: true,
     hot: true,
     inline: true,
     historyApiFallback: true,
