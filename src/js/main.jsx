@@ -45,7 +45,7 @@ const Main = createReactClass({
           <Gifts />
           <MakingWeekend api={this.state.googleApi} />
           <Upload />
-          <p className="contact">contact@aaronandlaylah.co.uk</p>
+          <p className="contact"><a name="upload">contact@aaronandlaylah.co.uk</a></p>
         </div>
       </div>
     )
