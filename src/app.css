@@ -70,6 +70,7 @@ body {
 input {
   padding: 4px;
   margin-bottom: 15px;
+  display: block;
 }
 
 .error {

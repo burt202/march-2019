@@ -84,13 +84,19 @@ const Upload = createReactClass({
 
   onDrop: function(e) {
     this.onDragLeave(e)
+    this.startUpload(e.dataTransfer.files)
+  },
 
+  onFileInputChange: function(e) {
+    this.startUpload(e.target.files)
+  },
+
+  startUpload: function(files) {
     if (!this.state.uploaderName.length) {
       this.setState({error: "Please provide an author name"})
       return
     }
 
-    const files = e.dataTransfer.files
     const invalidFiles = this.findInvalidFiles(files)
 
     if (invalidFiles.length) {
@@ -131,9 +137,10 @@ const Upload = createReactClass({
         {this.state.error && <p className="error">{this.state.error}</p>}
         {!this.state.uploads && <div>
           <input value={this.state.uploaderName} onChange={this.onInputChange} placeholder="Add your name here" />
+          <input type="file" key={this.state.error} onChange={this.onFileInputChange} multiple />
           <div className={className} onDragEnter={this.onDragEnter} onDragLeave={this.onDragLeave} onDragOver={this.onDragEnter} onDrop={this.onDrop}>
             <div>
-              <h3>Drag and drop your images here</h3>
+              <h3>Or Drag and drop your images here</h3>
             </div>
           </div>
         </div>}
