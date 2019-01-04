@@ -34,9 +34,7 @@ const Upload = createReactClass({
   },
 
   getPreSignedUrl: function(file) {
-    const fileName = file.name.split(".").slice(0, -1).join(".")
-
-    return fetch(`${LAMBDA_URL}?fileName=${fileName}&uploaderName=${this.state.uploaderName}`, {method: "get"})
+    return fetch(`${LAMBDA_URL}?fileName=${file.name}&fileType=${file.type}&uploaderName=${this.state.uploaderName}`, {method: "get"})
       .then(function(response) {
         if (!response.ok) {
           throw Error(response.statusText)
@@ -112,7 +110,7 @@ const Upload = createReactClass({
     const icon = (state === "uploading") ? <div className="loader" /> : <div className="checkmark-outer"><div className="checkmark-inner"></div></div>
 
     return (
-      <div className="progress-row">
+      <div key={fileName} className="progress-row">
         <div>{fileName}</div>
         {icon}
       </div>
