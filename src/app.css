@@ -150,7 +150,7 @@ input {
 /* Responsive */
 
 @media only screen and (max-width: 600px) {
-  .body {
+  .body, .drop-area {
     width: 100%;
   }
 }
