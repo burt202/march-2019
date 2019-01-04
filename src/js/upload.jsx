@@ -108,6 +108,17 @@ const Upload = createReactClass({
     }.bind(this))
   },
 
+  showProgressRow: function(fileName, state) {
+    const icon = (state === "uploading") ? <div className="loader" /> : <div className="checkmark-outer"><div className="checkmark-inner"></div></div>
+
+    return (
+      <div className="progress-row">
+        <div>{fileName}</div>
+        {icon}
+      </div>
+    )
+  },
+
   render: function() {
     const className = (this.state.hover) ? "drop-area hover" : "drop-area"
 
@@ -123,8 +134,10 @@ const Upload = createReactClass({
             </div>
           </div>
         </div>}
-        {this.state.uploads && <div id="progress">
-          {JSON.stringify(this.state.uploads)}
+        {this.state.uploads && <div>
+          {Object.keys(this.state.uploads).map(function(key) {
+            return this.showProgressRow(key, this.state.uploads[key])
+          }.bind(this))}
         </div>}
       </div>
     )
