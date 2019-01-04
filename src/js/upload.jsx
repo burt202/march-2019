@@ -1,5 +1,6 @@
 const React = require("react")
 const createReactClass = require("create-react-class")
+const bluebird = require("bluebird")
 
 const LAMBDA_URL = "https://msny951f6i.execute-api.us-east-2.amazonaws.com/default/getSignedUrl"
 
@@ -54,10 +55,6 @@ const Upload = createReactClass({
   },
 
   uploadFile: function(file) {
-    const toUpdate = this.state.uploads || {}
-    toUpdate[file.name] = "uploading"
-    this.setState({uploads: toUpdate})
-
     return this.getPreSignedUrl(file)
       .then(function(url) {
         return new Promise(function(resolve, reject) {
@@ -101,9 +98,16 @@ const Upload = createReactClass({
       return
     }
 
+    const toUpdate = {}
     Array.prototype.forEach.call(files, function(file) {
-      this.uploadFile(file)
-    }.bind(this))
+      toUpdate[file.name] = "uploading"
+    })
+
+    this.setState({uploads: toUpdate, error: null})
+
+    bluebird.map(files, function(file) {
+      return this.uploadFile(file)
+    }.bind(this), {concurrency: 1})
   },
 
   showProgressRow: function(fileName, state) {
@@ -123,6 +127,7 @@ const Upload = createReactClass({
     return (
       <div>
         <h1>Upload Your Photos</h1>
+        <p>If you have taken any photos on the day yourself, we would love to see them. Share them with us using the uploader below.</p>
         {this.state.error && <p className="error">{this.state.error}</p>}
         {!this.state.uploads && <div>
           <input value={this.state.uploaderName} onChange={this.onInputChange} placeholder="Add your name here" />

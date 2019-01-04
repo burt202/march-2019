@@ -50,7 +50,7 @@ body {
 
 .drop-area {
   height: 200px;
-  width: 600px;
+  width: 500px;
   border: 3px dashed #AAA;
   display: flex;
   justify-content: center;
