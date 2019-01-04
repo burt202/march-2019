@@ -140,7 +140,7 @@ const Upload = createReactClass({
           <input type="file" key={this.state.error} onChange={this.onFileInputChange} multiple disabled={!this.state.uploaderName.length} />
           <div className={className} onDragEnter={this.onDragEnter} onDragLeave={this.onDragLeave} onDragOver={this.onDragEnter} onDrop={this.onDrop}>
             <div>
-              <h3>Or Drag and drop your images here</h3>
+              <h3>Or drag and drop your images here</h3>
             </div>
           </div>
         </div>}
