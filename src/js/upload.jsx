@@ -35,17 +35,26 @@ const Upload = createReactClass({
   },
 
   getPreSignedUrl: function(file) {
-    return fetch(`${LAMBDA_URL}?fileName=${file.name}&fileType=${file.type}&uploaderName=${this.state.uploaderName}`, {method: "get"})
-      .then(function(response) {
-        if (!response.ok) {
-          throw Error(response.statusText)
-        }
+    return new Promise(function(resolve, reject) {
+      const  xhr = new XMLHttpRequest()
 
-        return response.json()
-      })
-      .then(function(res) {
-        return res.url
-      })
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText)
+            resolve(response.url)
+          } else {
+            reject({
+              status: xhr.status,
+              statusText: xhr.statusText,
+            })
+          }
+        }
+      }
+
+      xhr.open("GET", `${LAMBDA_URL}?fileName=${file.name}&fileType=${file.type}&uploaderName=${this.state.uploaderName}`)
+      xhr.send(null)
+    }.bind(this))
   },
 
   findInvalidFiles: function(files) {
