@@ -52,7 +52,7 @@ const Upload = createReactClass({
         }
       }
 
-      xhr.open("GET", `${LAMBDA_URL}?fileName=${file.name}&fileType=${file.type}&uploaderName=${this.state.uploaderName}`)
+      xhr.open("GET", LAMBDA_URL + "?fileName=" + file.name + "&fileType=" + file.type + "&uploaderName=" + this.state.uploaderName)
       xhr.send(null)
     }.bind(this))
   },
