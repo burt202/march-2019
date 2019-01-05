@@ -105,13 +105,15 @@ const Upload = createReactClass({
     }
 
     const toUpdate = {}
+    const filesArray = []
     Array.prototype.forEach.call(files, function(file) {
       toUpdate[file.name] = "uploading"
+      filesArray.push(file)
     })
 
     this.setState({uploads: toUpdate, error: null})
 
-    bluebird.map(files, function(file) {
+    bluebird.map(filesArray, function(file) {
       return this.uploadFile(file)
     }.bind(this), {concurrency: 1})
   },
