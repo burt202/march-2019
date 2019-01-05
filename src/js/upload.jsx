@@ -145,6 +145,7 @@ const Upload = createReactClass({
       <div>
         <h1>Upload Your Photos</h1>
         <p>If you have taken any photos on the day yourself, we would love to see them! Share them with us using the uploader below.</p>
+        <p>You can select multiple files at once</p>
         {this.state.error && <p className="error">{this.state.error}</p>}
         {!this.state.uploads && <div>
           <input value={this.state.uploaderName} onChange={this.onInputChange} placeholder="Add your name here" />
