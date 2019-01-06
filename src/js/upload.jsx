@@ -138,6 +138,29 @@ const Upload = createReactClass({
     )
   },
 
+  resetUpload: function() {
+    this.setState({uploads: null})
+  },
+
+  showCompletion: function() {
+    let uploadTotal = 0
+    let completedTotal = 0
+
+    Object.keys(this.state.uploads).forEach(function(key) {
+      uploadTotal += 1
+      if (this.state.uploads[key] === "complete") completedTotal += 1
+    }.bind(this))
+
+    if (uploadTotal !== completedTotal) return null
+
+    return (
+      <div className="upload-complete">
+        <h3>Complete!</h3>
+        <a href="#upload" onClick={this.resetUpload}>Upload more</a>
+      </div>
+    )
+  },
+
   render: function() {
     const className = (this.state.hover) ? "drop-area hover" : "drop-area"
 
@@ -160,6 +183,7 @@ const Upload = createReactClass({
           {Object.keys(this.state.uploads).map(function(key) {
             return this.showProgressRow(key, this.state.uploads[key])
           }.bind(this))}
+          {this.showCompletion()}
         </div>}
       </div>
     )

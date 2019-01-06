@@ -148,6 +148,15 @@ input {
   }
 }
 
+.upload-complete {
+  display: flex;
+  align-items: center;
+}
+
+.upload-complete h3 {
+  margin-right: 15px;
+}
+
 /* Responsive */
 
 @media only screen and (max-width: 600px) {
