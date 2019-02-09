@@ -8,7 +8,12 @@ const Food = createReactClass({
     return (
       <div>
         <h1>Food</h1>
-        <p>There will a set menu for the wedding breakfast but this and the evening buffet are still to be decided. We will update this once things have been confirmed. If you have any dietary requirements be sure to let us know in good time.</p>
+        <h3>Wedding Breakfast</h3>
+        <p>Starter: Pea and mint soup, pea shoots with bacon crisp</p>
+        <p>Main: Thyme roasted chicken breast, dauphinoise potatoes, sauté peas and leeks and a rich red wine jus</p>
+        <p>Dessert: Cheesecake, macerated strawberries, meringue and honeycomb</p>
+        <h3>Evening Buffet</h3>
+        <p>Still to be decided. We will update this once things have been confirmed.</p>
       </div>
     )
   },
