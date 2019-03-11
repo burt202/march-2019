@@ -13,7 +13,14 @@ const Food = createReactClass({
         <p>Main: Thyme roasted chicken breast, dauphinoise potatoes, sauté peas and leeks and a rich red wine jus</p>
         <p>Dessert: Cheesecake, macerated strawberries, meringue and honeycomb</p>
         <h3>Evening Buffet</h3>
-        <p>Still to be decided. We will update this once things have been confirmed.</p>
+        <ul>
+          <li>A selection of Chefs meat and vegetarian wraps</li>
+          <li>Garlic & sage chicken skewers (GF)</li>
+          <li>Soy and honey glazed sausages</li>
+          <li>Lamb, red onion and coriander kofta, mango chutney</li>
+          <li>Bruschetta with hummus and roasted vegetables (V)</li>
+          <li>Dark chocolate and orange mousse</li>
+        </ul>
       </div>
     )
   },
