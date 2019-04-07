@@ -1,11 +1,26 @@
 const React = require("react")
 const createReactClass = require("create-react-class")
-const bluebird = require("bluebird")
+const LiteUploader = require("./lu")
+
+let lu
 
 const LAMBDA_URL = "https://msny951f6i.execute-api.us-east-2.amazonaws.com/default/getSignedUrl"
 
 const Upload = createReactClass({
   displayName: "Upload",
+
+  componentDidMount: function() {
+    lu = new LiteUploader({
+      url: this.getPreSignedUrl,
+      ref: "file",
+      method: "PUT",
+      rules: {
+        allowedFileTypes: "image/jpeg",
+      },
+      sendAsFormData: false,
+      singleFileUploads: true,
+    }, this.onEvent)
+  },
 
   getInitialState: function() {
     return {
@@ -13,6 +28,29 @@ const Upload = createReactClass({
       hover: false,
       uploads: null,
       error: null,
+    }
+  },
+
+  onEvent: function(name, value) {
+    console.log(name, value)
+
+    switch (name) {
+    case "lu:errors":
+      this.setState({error: "You can only upload .jpg images"})
+      break
+    case "lu:start":
+      this.setState({error: null})
+      break
+    case "lu:before":
+      const uploadsOnStart = {}
+      uploadsOnStart[value.files[0].name] = "uploading"
+      this.setState({uploads: Object.assign({}, this.state.uploads, uploadsOnStart)})
+      break
+    case "lu:success":
+      const uploadsOnSuccess = {}
+      uploadsOnSuccess[value.files[0].name] = "complete"
+      this.setState({uploads: Object.assign({}, this.state.uploads, uploadsOnSuccess)})
+      break
     }
   },
 
@@ -34,7 +72,7 @@ const Upload = createReactClass({
     this.setState({hover: false})
   },
 
-  getPreSignedUrl: function(file) {
+  getPreSignedUrl: function(files) {
     return new Promise(function(resolve, reject) {
       const  xhr = new XMLHttpRequest()
 
@@ -52,43 +90,9 @@ const Upload = createReactClass({
         }
       }
 
-      xhr.open("GET", LAMBDA_URL + "?fileName=" + file.name + "&fileType=" + file.type + "&uploaderName=" + this.state.uploaderName)
+      xhr.open("GET", LAMBDA_URL + "?fileName=" + files[0].name + "&fileType=" + files[0].type + "&uploaderName=" + this.state.uploaderName)
       xhr.send(null)
     }.bind(this))
-  },
-
-  findInvalidFiles: function(files) {
-    return Array.prototype.filter.call(files, function(file) {
-      return file.type !== "image/jpeg"
-    })
-  },
-
-  uploadFile: function(file) {
-    return this.getPreSignedUrl(file)
-      .then(function(url) {
-        return new Promise(function(resolve, reject) {
-          const xhr = new XMLHttpRequest()
-
-          xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4) {
-              if (xhr.status === 200) {
-                const toUpdate = this.state.uploads
-                toUpdate[file.name] = "complete"
-                this.setState({uploads: toUpdate})
-                resolve({})
-              } else {
-                reject({
-                  status: xhr.status,
-                  statusText: xhr.statusText,
-                })
-              }
-            }
-          }.bind(this)
-
-          xhr.open("PUT", url)
-          xhr.send(file)
-        }.bind(this))
-      }.bind(this))
   },
 
   onDrop: function(e) {
@@ -106,25 +110,8 @@ const Upload = createReactClass({
       return
     }
 
-    const invalidFiles = this.findInvalidFiles(files)
-
-    if (invalidFiles.length) {
-      this.setState({error: "You can only upload .jpg images"})
-      return
-    }
-
-    const toUpdate = {}
-    const filesArray = []
-    Array.prototype.forEach.call(files, function(file) {
-      toUpdate[file.name] = "uploading"
-      filesArray.push(file)
-    })
-
-    this.setState({uploads: toUpdate, error: null})
-
-    bluebird.map(filesArray, function(file) {
-      return this.uploadFile(file)
-    }.bind(this), {concurrency: 1})
+    lu.addParam("uploaderName", this.state.uploaderName)
+    lu.startUpload(files)
   },
 
   showProgressRow: function(fileName, state) {
